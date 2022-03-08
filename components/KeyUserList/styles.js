@@ -8,6 +8,7 @@ const styles = css`
     grid-template-rows: 45px;
     margin-bottom: 10px;
     padding: 10px;
+    margin-bottom: 15px;
   }
 
   ul::-webkit-scrollbar {

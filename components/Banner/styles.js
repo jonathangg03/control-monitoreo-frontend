@@ -3,8 +3,9 @@ import { colors } from '../../styles/themes'
 
 const styles = css`
   div {
-    background-color: ${colors.selector};
+    background-color: ${colors.banner};
     padding: 40px 20px;
+    margin-top: 15px;
   }
 `
 
