@@ -8,8 +8,18 @@ const Keys = () => {
   return (
     <>
       <Title content={'Control de llaves'} />
+      <form className='search'>
+        <input
+          type='text'
+          placeholder='Buscar llave'
+          required
+          name='search'
+          onClick={() => {}}
+        />
+        <button>Buscar</button>
+      </form>
       <KeyUserList keyUsers={mockKeys} />
-      <Link href='/newKeyUser'>
+      <Link href='/llaves/nuevo'>
         <a>Agregar registro</a>
       </Link>
       <style jsx>{styles}</style>
