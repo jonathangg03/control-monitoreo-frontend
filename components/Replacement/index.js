@@ -1,6 +1,6 @@
 import styles from './styles'
 
-const KeyUser = ({
+const Replacement = ({
   client,
   date,
   hour,
@@ -29,4 +29,4 @@ const KeyUser = ({
   )
 }
 
-export default KeyUser
+export default Replacement

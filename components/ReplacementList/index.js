@@ -1,7 +1,7 @@
 import Replacement from '../Replacement'
 import styles from './styles'
 
-const KeyUserList = ({ replacements }) => {
+const ReplacementList = ({ replacements }) => {
   return (
     <>
       <ul className='table'>
@@ -28,4 +28,4 @@ const KeyUserList = ({ replacements }) => {
   )
 }
 
-export default KeyUserList
+export default ReplacementList
