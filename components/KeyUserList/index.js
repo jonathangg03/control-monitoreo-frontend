@@ -7,24 +7,16 @@ const KeyUserList = ({ keyUsers }) => {
       <ul className='table'>
         <li className='col'>
           <h2>Nombre del retirante</h2>
-        </li>
-        <li className='col'>
           <h2>Nombre de la llave</h2>
-        </li>
-        <li className='col'>
           <h2>Fecha</h2>
-        </li>
-        <li className='col'>
           <h2>Número de unidades</h2>
-        </li>
-        <li className='col'>
           <h2>Hora del retiro</h2>
-        </li>
-        <li className='col'>
           <h2>Hora de devolución</h2>
         </li>
         {keyUsers.map((keyUser) => (
-          <KeyUser key={keyUser._id} {...keyUser} />
+          <li key={keyUser._id}>
+            <KeyUser {...keyUser} />
+          </li>
         ))}
       </ul>
       <style jsx>{styles}</style>

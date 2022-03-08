@@ -3,18 +3,15 @@ import css from 'styled-jsx/css'
 const styles = css`
   .table {
     display: grid;
-    grid-template-columns: repeat(6, 185px);
     overflow-x: auto;
-    gap: 10px 20px;
-    grid-auto-rows: 100px;
-    grid-template-rows: 25px;
     list-style: none;
-    grid-auto-rows: 50px;
+    grid-template-rows: 45px;
     margin-bottom: 10px;
+    padding: 10px;
   }
 
   ul::-webkit-scrollbar {
-    height: 5px;
+    height: 7px;
   }
 
   ul::-webkit-scrollbar-track {
@@ -30,6 +27,22 @@ const styles = css`
   h2 {
     font-weight: 300;
     font-size: 1.8rem;
+  }
+
+  li {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 185px);
+    gap: 10px;
+    padding: 10px 0 10px 10px;
+  }
+
+  li:nth-child(odd) {
+    background-color: white;
+  }
+
+  li:nth-child(even) {
+    background-color: #f1f1f1;
   }
 `
 
