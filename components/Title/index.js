@@ -1,3 +1,4 @@
+import propTypes from 'prop-types'
 import { fontSizes } from '../../styles/themes'
 
 const Title = ({ content }) => {
@@ -13,6 +14,10 @@ const Title = ({ content }) => {
       `}</style>
     </>
   )
+}
+
+Title.propTypes = {
+  content: propTypes.string.isRequired
 }
 
 export default Title

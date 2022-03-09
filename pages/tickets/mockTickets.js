@@ -1,6 +1,6 @@
 const mockKeys = [
   {
-    caseNumber: '6079',
+    caseNumber: 6079,
     client: 'BCR',
     date: '18/2/22',
     enterHour: '14:15',
@@ -11,7 +11,7 @@ const mockKeys = [
     _id: '1'
   },
   {
-    caseNumber: '6079',
+    caseNumber: 6079,
     client: 'BCR',
     date: '18/2/22',
     enterHour: '14:15',
@@ -22,7 +22,7 @@ const mockKeys = [
     _id: '2'
   },
   {
-    caseNumber: '6079',
+    caseNumber: 6079,
     client: 'BCR',
     date: '18/2/22',
     enterHour: '14:15',
@@ -33,7 +33,7 @@ const mockKeys = [
     _id: '3'
   },
   {
-    caseNumber: '6079',
+    caseNumber: 6079,
     client: 'BCR',
     date: '18/2/22',
     enterHour: '14:15',
@@ -44,7 +44,7 @@ const mockKeys = [
     _id: '4'
   },
   {
-    caseNumber: '6079',
+    caseNumber: 6079,
     client: 'BCR',
     date: '18/2/22',
     enterHour: '14:15',

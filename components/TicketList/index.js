@@ -1,3 +1,4 @@
+import propTypes from 'prop-types'
 import Ticket from '../Ticket'
 import styles from './styles'
 
@@ -24,6 +25,10 @@ const TicketList = ({ tickets }) => {
       <style jsx>{styles}</style>
     </>
   )
+}
+
+TicketList.propTypes = {
+  tickets: propTypes.array.isRequired
 }
 
 export default TicketList
