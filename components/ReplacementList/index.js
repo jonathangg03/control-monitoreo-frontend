@@ -1,3 +1,4 @@
+import propTypes from 'prop-types'
 import Replacement from '../Replacement'
 import styles from './styles'
 
@@ -26,6 +27,10 @@ const ReplacementList = ({ replacements }) => {
       <style jsx>{styles}</style>
     </>
   )
+}
+
+ReplacementList.propTypes = {
+  replacements: propTypes.array.isRequired
 }
 
 export default ReplacementList

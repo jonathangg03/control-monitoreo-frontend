@@ -1,3 +1,5 @@
+import propTypes from 'prop-types'
+
 import styles from './styles'
 
 const Replacement = ({
@@ -27,6 +29,19 @@ const Replacement = ({
       <style jsx>{styles}</style>
     </>
   )
+}
+
+Replacement.propTypes = {
+  client: propTypes.string.isRequired,
+  date: propTypes.string.isRequired,
+  hour: propTypes.string.isRequired,
+  caseNumber: propTypes.string.isRequired,
+  partNumber: propTypes.string.isRequired,
+  seriesNumber: propTypes.string.isRequired,
+  units: propTypes.number.isRequired,
+  partName: propTypes.string.isRequired,
+  engineerName: propTypes.string.isRequired,
+  description: propTypes.string.isRequired
 }
 
 export default Replacement
