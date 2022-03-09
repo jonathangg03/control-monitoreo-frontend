@@ -12,7 +12,7 @@ const AlertsList = ({ alerts }) => {
           <h2>Fecha</h2>
           <h2>Hora de alerta</h2>
           <h2>Hora de reporte</h2>
-          <h2>ingeniero contactado</h2>
+          <h2>Ingeniero contactado</h2>
           <h2>Técnico de monitoreo</h2>
           <h2>Ticket abierto</h2>
           <h2>Descripción</h2>
