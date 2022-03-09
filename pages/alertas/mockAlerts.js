@@ -8,7 +8,6 @@ const mockKeys = [
     contact: 'Francisco Sanchez',
     description: 'Hi-track error',
     monitorName: 'Jonathan García',
-    ticketOpened: false,
     actions: 'Se contacto con Alcides, y no hay problema',
     _id: '1'
   },
@@ -34,7 +33,6 @@ const mockKeys = [
     contact: 'Francisco Sanchez',
     description: 'Hi-track error',
     monitorName: 'Jonathan García',
-    ticketOpened: false,
     actions: 'Se contacto con Alcides, y no hay problema',
     _id: '3'
   },
@@ -60,7 +58,6 @@ const mockKeys = [
     contact: 'Francisco Sanchez',
     description: 'Hi-track error',
     monitorName: 'Jonathan García',
-    ticketOpened: false,
     actions: 'Se contacto con Alcides, y no hay problema',
     _id: '5'
   }

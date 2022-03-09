@@ -1,3 +1,4 @@
+import propTypes from 'prop-types'
 import Alert from '../Alert'
 import styles from './styles'
 
@@ -26,6 +27,10 @@ const AlertsList = ({ alerts }) => {
       <style jsx>{styles}</style>
     </>
   )
+}
+
+AlertsList.propTypes = {
+  alerts: propTypes.array.isRequired
 }
 
 export default AlertsList

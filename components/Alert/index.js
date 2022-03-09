@@ -1,3 +1,4 @@
+import propTypes from 'prop-types'
 import styles from './styles'
 
 const Ticket = ({
@@ -27,6 +28,19 @@ const Ticket = ({
       <style jsx>{styles}</style>
     </>
   )
+}
+
+Ticket.propTypes = {
+  client: propTypes.string.isRequired,
+  source: propTypes.string.isRequired,
+  date: propTypes.string.isRequired,
+  alertHour: propTypes.string.isRequired,
+  reportHour: propTypes.string.isRequired,
+  contact: propTypes.string,
+  monitorName: propTypes.string.isRequired,
+  ticketOpened: propTypes.number,
+  description: propTypes.string.isRequired,
+  actions: propTypes.string.isRequired
 }
 
 export default Ticket
