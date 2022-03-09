@@ -1,3 +1,4 @@
+import propTypes from 'prop-types'
 import styles from './styles'
 
 const KeyUser = ({ user, keyName, units, date, retirement, delivery }) => {
@@ -12,6 +13,15 @@ const KeyUser = ({ user, keyName, units, date, retirement, delivery }) => {
       <style jsx>{styles}</style>
     </>
   )
+}
+
+KeyUser.propTypes = {
+  user: propTypes.string.isRequired,
+  keyName: propTypes.string.isRequired,
+  units: propTypes.number.isRequired,
+  date: propTypes.string.isRequired,
+  retirement: propTypes.string.isRequired,
+  delivery: propTypes.string.isRequired
 }
 
 export default KeyUser

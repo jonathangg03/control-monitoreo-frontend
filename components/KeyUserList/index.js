@@ -1,3 +1,4 @@
+import propTypes from 'prop-types'
 import KeyUser from '../KeyUser'
 import styles from './styles'
 
@@ -22,6 +23,10 @@ const KeyUserList = ({ keyUsers }) => {
       <style jsx>{styles}</style>
     </>
   )
+}
+
+KeyUserList.propTypes = {
+  keyUsers: propTypes.array.isRequired
 }
 
 export default KeyUserList
