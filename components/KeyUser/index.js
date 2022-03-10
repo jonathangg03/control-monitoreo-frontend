@@ -6,9 +6,9 @@ const KeyUser = ({ user, keyName, units, date, retirement, delivery }) => {
     <>
       <p>{user}</p>
       <p>{keyName}</p>
-      <p>{units}</p>
       <p>{date}</p>
       <p>{retirement}</p>
+      <p>{units}</p>
       <p>{delivery}</p>
       <style jsx>{styles}</style>
     </>
