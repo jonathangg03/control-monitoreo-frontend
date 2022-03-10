@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import KeyUserList from '../../components/KeyUserList'
 import Title from '../../components/Title'
-import mockKeys from './mockKeys'
 import styles from './styles'
 
 const Keys = () => {
@@ -18,7 +17,7 @@ const Keys = () => {
         />
         <button>Buscar</button>
       </form>
-      <KeyUserList keyUsers={mockKeys} />
+      <KeyUserList keyUsers={[]} />
       <Link href='/llaves/nuevo'>
         <a>Agregar registro</a>
       </Link>

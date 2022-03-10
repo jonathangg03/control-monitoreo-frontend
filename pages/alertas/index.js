@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import AlertsList from '../../components/AlertsList'
 import Title from '../../components/Title'
-import mockAlerts from './mockAlerts'
 import styles from './styles'
 
 const Alerts = () => {
@@ -18,7 +17,7 @@ const Alerts = () => {
         />
         <button>Buscar</button>
       </form>
-      <AlertsList alerts={mockAlerts} />
+      <AlertsList alerts={[]} />
       <Link href='/alertas/nuevo'>
         <a>Agregar registro</a>
       </Link>

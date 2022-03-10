@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import TicketList from '../../components/TicketList'
 import Title from '../../components/Title'
-import mockTickets from './mockTickets'
 import styles from './styles'
 
 const Tickets = () => {
@@ -18,7 +17,7 @@ const Tickets = () => {
         />
         <button>Buscar</button>
       </form>
-      <TicketList tickets={mockTickets} />
+      <TicketList tickets={[]} />
       <Link href='/tickets/nuevo'>
         <a>Agregar registro</a>
       </Link>

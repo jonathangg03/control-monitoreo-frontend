@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import ReplacementList from '../../components/ReplacementList'
 import Title from '../../components/Title'
-import mockReplacements from './mockReplacements'
 import styles from './styles'
 
 const Keys = () => {
@@ -18,7 +17,7 @@ const Keys = () => {
         />
         <button>Buscar</button>
       </form>
-      <ReplacementList replacements={mockReplacements} />
+      <ReplacementList replacements={[]} />
       <Link href='/equipo/nuevo'>
         <a>Agregar registro</a>
       </Link>
