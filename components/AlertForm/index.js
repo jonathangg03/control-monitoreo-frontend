@@ -43,10 +43,20 @@ const AlertForm = () => {
           )}
         </label>
         <label>
-          <p>Ingeniero contactado:</p>
+          <p>Persona contactada:</p>
           <input type='text' {...register('contact', { required: true })} />
           {errors.contact && (
             <p className='error__message'>Ingeniero requerido</p>
+          )}
+        </label>
+        <label>
+          <p>Correo de la persona contactada:</p>
+          <input
+            type='email'
+            {...register('contactEmail', { required: true })}
+          />
+          {errors.contactEmail && (
+            <p className='error__message'>Correo requerido</p>
           )}
         </label>
         <label>
