@@ -73,7 +73,7 @@ const AlertForm = () => {
           <input
             type='text'
             {...register('description', { required: true })}
-            placeholder='Descripción de la alerta.'
+            placeholder='Breve descripción de la alerta'
           />
           {errors.description && (
             <p className='error__message'>Descripción requerida</p>
@@ -89,6 +89,14 @@ const AlertForm = () => {
           {errors.actions && (
             <p className='error__message'>Acciones requeridas</p>
           )}
+        </label>
+        <label>
+          <p>Comentarios extra:</p>
+          <input
+            type='text'
+            {...register('extraComments')}
+            placeholder='Indicar demás información importante'
+          />
         </label>
         <button>Agregar</button>
       </form>

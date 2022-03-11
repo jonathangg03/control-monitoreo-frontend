@@ -11,7 +11,8 @@ const Ticket = ({
   monitorName,
   ticketOpened,
   description,
-  actions
+  actions,
+  extraComments
 }) => {
   return (
     <>
@@ -25,6 +26,7 @@ const Ticket = ({
       <p>{ticketOpened}</p>
       <p>{description}</p>
       <p>{actions}</p>
+      <p>{extraComments}</p>
       <style jsx>{styles}</style>
     </>
   )
@@ -36,11 +38,12 @@ Ticket.propTypes = {
   date: propTypes.string.isRequired,
   alertHour: propTypes.string.isRequired,
   reportHour: propTypes.string.isRequired,
-  contact: propTypes.string,
+  contact: propTypes.string.isRequired,
   monitorName: propTypes.string.isRequired,
   ticketOpened: propTypes.number,
   description: propTypes.string.isRequired,
-  actions: propTypes.string.isRequired
+  actions: propTypes.string.isRequired,
+  extraComments: propTypes.string
 }
 
 export default Ticket
