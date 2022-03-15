@@ -4,7 +4,7 @@ const fonts = {
 
 const colors = {
   background: '#f5f7f8',
-  selector: '#1dc7ea',
+  selector: '#0071c5',
   banner: '#0071c5',
   main: '#47647a'
 }

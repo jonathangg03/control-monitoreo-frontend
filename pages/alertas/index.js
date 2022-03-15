@@ -1,10 +1,23 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import AlertsList from '../../components/AlertsList'
 import Title from '../../components/Title'
 import getAlerts from '../../services/getAlerts'
+import useFilter from '../../hooks/useFilter'
 import { colors, fontSizes } from '../../styles/themes'
 
 const Alerts = ({ alerts }) => {
+  const [searchValue, setSearchValue] = useState('')
+  const { filteredRecords: filteredAlerts, handleSearch } = useFilter({
+    searchValue,
+    registers: alerts,
+    filter: 'client'
+  })
+
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value)
+  }
+
   return (
     <>
       <Title content={'Control de alertas'} />
@@ -14,11 +27,14 @@ const Alerts = ({ alerts }) => {
           placeholder='Buscar alerta'
           required
           name='search'
-          onClick={() => {}}
+          value={searchValue}
+          onChange={handleSearchChange}
         />
-        <button>Buscar</button>
+        <button type='button' onClick={handleSearch}>
+          Buscar
+        </button>
       </form>
-      <AlertsList alerts={alerts || []} />
+      <AlertsList alerts={filteredAlerts || []} />
       <Link href='/alertas/nuevo'>
         <a>Agregar registro</a>
       </Link>
