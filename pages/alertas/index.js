@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import AlertsList from '../../components/AlertsList'
 import Title from '../../components/Title'
+import getAlerts from '../../services/getAlerts'
 import { colors, fontSizes } from '../../styles/themes'
 
-const Alerts = () => {
+const Alerts = ({ alerts }) => {
   return (
     <>
       <Title content={'Control de alertas'} />
@@ -17,7 +18,7 @@ const Alerts = () => {
         />
         <button>Buscar</button>
       </form>
-      <AlertsList alerts={[]} />
+      <AlertsList alerts={alerts || []} />
       <Link href='/alertas/nuevo'>
         <a>Agregar registro</a>
       </Link>
@@ -59,6 +60,12 @@ const Alerts = () => {
       `}</style>
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const alerts = await getAlerts()
+
+  return { props: { alerts: alerts } }
 }
 
 export default Alerts

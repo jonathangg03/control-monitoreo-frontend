@@ -1,15 +1,23 @@
+import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
+import sendAlert from '../../services/sendAlert'
 import styles from './styles'
 
 const AlertForm = () => {
+  const router = useRouter()
   const {
     handleSubmit,
     register,
     formState: { errors }
   } = useForm()
 
-  const onSubmit = (values) => {
-    console.log(values)
+  const onSubmit = async (values) => {
+    try {
+      await sendAlert({ alert: values })
+      router.push('/alertas')
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 
   return (
