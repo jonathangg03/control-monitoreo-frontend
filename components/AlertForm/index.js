@@ -1,19 +1,24 @@
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import sendAlert from '../../services/sendAlert'
+import editAlert from '../../services/editAlert'
 import styles from './styles'
 
-const AlertForm = () => {
+const AlertForm = ({ alert }) => {
   const router = useRouter()
   const {
     handleSubmit,
     register,
     formState: { errors }
-  } = useForm()
+  } = useForm({ defaultValues: alert || {} })
 
   const onSubmit = async (values) => {
     try {
-      await sendAlert({ alert: values })
+      if (alert) {
+        await editAlert({ alert: values, id: alert._id })
+      } else {
+        await sendAlert({ alert: values })
+      }
       router.push('/alertas')
     } catch (error) {
       console.error(error.message)
@@ -52,20 +57,11 @@ const AlertForm = () => {
         </label>
         <label>
           <p>Persona contactada:</p>
-          <input type='text' {...register('contact', { required: true })} />
-          {errors.contact && (
-            <p className='error__message'>Ingeniero requerido</p>
-          )}
+          <input type='text' {...register('contact')} />
         </label>
         <label>
           <p>Correo de la persona contactada:</p>
-          <input
-            type='email'
-            {...register('contactEmail', { required: true })}
-          />
-          {errors.contactEmail && (
-            <p className='error__message'>Correo requerido</p>
-          )}
+          <input type='email' {...register('contactEmail')} />
         </label>
         <label>
           <p>Técnico de monitoreo:</p>

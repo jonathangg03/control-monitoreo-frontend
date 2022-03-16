@@ -32,12 +32,12 @@ const Ticket = ({
       <p>{extraComments}</p>
       <div>
         <Link href={`/alertas/${_id}/editar`}>
-          <a>
+          <a title='Editar'>
             <BsPencilSquare />
           </a>
         </Link>
         <Link href={`/alertas/${_id}/eliminar`}>
-          <a className='delete'>
+          <a className='delete' title='Eliminar'>
             <BsXLg />
           </a>
         </Link>
