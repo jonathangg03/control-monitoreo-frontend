@@ -18,6 +18,7 @@ const AlertsList = ({ alerts }) => {
           <h2>Descripción</h2>
           <h2>Acciones tomadas</h2>
           <h2>Comentarios extra</h2>
+          <h2>Opciones</h2>
         </li>
         {alerts.map((alert) => (
           <li key={alert._id}>

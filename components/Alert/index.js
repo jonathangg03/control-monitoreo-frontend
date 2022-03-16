@@ -1,4 +1,6 @@
 import propTypes from 'prop-types'
+import Link from 'next/link'
+import { BsPencilSquare, BsXLg } from 'react-icons/bs'
 import styles from './styles'
 
 const Ticket = ({
@@ -12,7 +14,8 @@ const Ticket = ({
   ticketOpened,
   description,
   actions,
-  extraComments
+  extraComments,
+  _id
 }) => {
   return (
     <>
@@ -27,6 +30,18 @@ const Ticket = ({
       <p>{description}</p>
       <p>{actions}</p>
       <p>{extraComments}</p>
+      <div>
+        <Link href={`/alertas/${_id}/editar`}>
+          <a>
+            <BsPencilSquare />
+          </a>
+        </Link>
+        <Link href={`/alertas/${_id}/eliminar`}>
+          <a className='delete'>
+            <BsXLg />
+          </a>
+        </Link>
+      </div>
       <style jsx>{styles}</style>
     </>
   )
