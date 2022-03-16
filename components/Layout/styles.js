@@ -19,6 +19,10 @@ export const global = css.global`
     padding: 0 15px 20px;
     color: ${colors.main};
   }
+
+  button {
+    cursor: pointer;
+  }
 `
 
 export const layout = css`
