@@ -1,15 +1,28 @@
+import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
+import sendKey from '../../services/sendKey'
+import editKey from '../../services/editKey'
 import styles from './styles'
 
-const KeyForm = () => {
+const KeyForm = ({ key }) => {
+  const router = useRouter()
   const {
     handleSubmit,
     register,
     formState: { errors }
-  } = useForm()
+  } = useForm({ defaultValues: key || {} })
 
-  const onSubmit = (values) => {
-    console.log(values)
+  const onSubmit = async (values) => {
+    try {
+      if (key) {
+        await editKey({ key: values, id: key._id })
+      } else {
+        await sendKey({ key: values })
+      }
+      router.push('/llaves')
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 
   return (

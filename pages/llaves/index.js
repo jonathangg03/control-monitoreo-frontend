@@ -1,23 +1,34 @@
+import { useState } from 'react'
 import Link from 'next/link'
+import useFilter from '../../hooks/useFilter'
+import Filter from '../../components/Filter'
 import KeyUserList from '../../components/KeyUserList'
 import Title from '../../components/Title'
+import getKeys from '../../services/getKeys'
 import { colors, fontSizes } from '../../styles/themes'
 
-const Keys = () => {
+const Keys = ({ keys }) => {
+  const [searchValue, setSearchValue] = useState('')
+  const { filteredRecords: filteredKeys, handleSearch } = useFilter({
+    searchValue,
+    registers: keys,
+    filter: 'keyName'
+  })
+
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value)
+  }
+
   return (
     <>
       <Title content={'Control de llaves'} />
-      <form className='search'>
-        <input
-          type='text'
-          placeholder='Buscar llave'
-          required
-          name='search'
-          onClick={() => {}}
-        />
-        <button>Buscar</button>
-      </form>
-      <KeyUserList keyUsers={[]} />
+      <Filter
+        handleSearch={handleSearch}
+        handleSearchChange={handleSearchChange}
+        searchValue={searchValue}
+        inputPlaceholder='Filtrar por nombre de cliente'
+      />
+      <KeyUserList keyUsers={filteredKeys || []} />
       <Link href='/llaves/nuevo'>
         <a>Agregar registro</a>
       </Link>
@@ -59,6 +70,12 @@ const Keys = () => {
       `}</style>
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const keys = await getKeys()
+
+  return { props: { keys } }
 }
 
 export default Keys
