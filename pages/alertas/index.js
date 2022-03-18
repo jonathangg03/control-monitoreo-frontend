@@ -1,9 +1,10 @@
-import { useState } from 'react'
 import Link from 'next/link'
+import { useState } from 'react'
+import useFilter from '../../hooks/useFilter'
 import AlertsList from '../../components/AlertsList'
+import Filter from '../../components/Filter'
 import Title from '../../components/Title'
 import getAlerts from '../../services/getAlerts'
-import useFilter from '../../hooks/useFilter'
 import { colors, fontSizes } from '../../styles/themes'
 
 const Alerts = ({ alerts }) => {
@@ -21,19 +22,12 @@ const Alerts = ({ alerts }) => {
   return (
     <>
       <Title content={'Control de alertas'} />
-      <form className='search'>
-        <input
-          type='text'
-          placeholder='Buscar alerta'
-          required
-          name='search'
-          value={searchValue}
-          onChange={handleSearchChange}
-        />
-        <button type='button' onClick={handleSearch}>
-          Buscar
-        </button>
-      </form>
+      <Filter
+        handleSearch={handleSearch}
+        handleSearchChange={handleSearchChange}
+        searchValue={searchValue}
+        inputPlaceholder='Filtrar por nombre de cliente'
+      />
       <AlertsList alerts={filteredAlerts || []} />
       <Link href='/alertas/nuevo'>
         <a>Agregar registro</a>
@@ -43,35 +37,6 @@ const Alerts = ({ alerts }) => {
           font-size: ${fontSizes.main};
           color: ${colors.selector};
           text-decoration: none;
-        }
-
-        form {
-          margin-bottom: 20px;
-        }
-
-        input {
-          width: 50%;
-          height: 35px;
-          margin-bottom: 10px;
-          outline: none;
-          padding: 0px 5px;
-          border: none;
-          border-bottom: 1px solid #f1f1f1;
-          color: ${colors.main};
-        }
-
-        input::placeholder {
-          color: #c1c1c1;
-        }
-
-        button {
-          display: block;
-          background-color: ${colors.selector};
-          border: none;
-          color: white;
-          padding: 10px 40px;
-          border-radius: 5px;
-          font-size: ${fontSizes.main};
         }
       `}</style>
     </>

@@ -7,7 +7,8 @@ const useFilter = ({ searchValue, registers, filter }) => {
     setFilteredRecords(registers)
   }, [registers])
 
-  const handleSearch = () => {
+  const handleSearch = (event) => {
+    event.preventDefault()
     if (searchValue) {
       const filterRegisters = registers.filter((register) => {
         if (
