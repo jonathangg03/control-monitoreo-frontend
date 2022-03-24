@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { colors, fontSizes } from '../../../styles/themes'
-import deleteAlert from '../../../services/deleteAlert'
+import { deleteAlert } from '../../../services/alerts'
 
 const AlertDelete = () => {
   const router = useRouter()

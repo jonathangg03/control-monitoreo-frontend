@@ -4,7 +4,7 @@ import useFilter from '../../hooks/useFilter'
 import AlertsList from '../../components/AlertsList'
 import Filter from '../../components/Filter'
 import Title from '../../components/Title'
-import getAlerts from '../../services/getAlerts'
+import { getAlerts } from '../../services/alerts'
 import { colors, fontSizes } from '../../styles/themes'
 
 const Alerts = ({ alerts }) => {

@@ -1,11 +1,13 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import sendAlert from '../../services/sendAlert'
-import editAlert from '../../services/editAlert'
+import { sendAlert, editAlert } from '../../services/alerts'
 import styles from './styles'
 
 const AlertForm = ({ alert }) => {
   const router = useRouter()
+  const [error, setError] = useState()
+
   const {
     handleSubmit,
     register,
@@ -13,15 +15,16 @@ const AlertForm = ({ alert }) => {
   } = useForm({ defaultValues: alert || {} })
 
   const onSubmit = async (values) => {
-    try {
-      if (alert) {
-        await editAlert({ alert: values, id: alert._id })
-      } else {
+    if (alert) {
+      const response = await editAlert({ alert: values, id: alert._id })
+      response.error ? setError(response) : router.push('/alertas')
+    } else {
+      try {
         await sendAlert({ alert: values })
+        router.push('/alertas')
+      } catch (error) {
+        console.log(error)
       }
-      router.push('/alertas')
-    } catch (error) {
-      console.error(error.message)
     }
   }
 
@@ -113,6 +116,8 @@ const AlertForm = ({ alert }) => {
           />
         </label>
         <button>Agregar</button>
+        {console.log(error)}
+        <p>{error?.message}</p>
       </form>
       <style jsx>{styles}</style>
     </>

@@ -1,6 +1,6 @@
 import Title from '../../../components/Title'
 import AlertForm from '../../../components/AlertForm'
-import getAlerts from '../../../services/getAlerts'
+import { getAlerts } from '../../../services/alerts'
 
 const AlertEdit = ({ alert }) => {
   return (

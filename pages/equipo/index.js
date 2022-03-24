@@ -3,7 +3,7 @@ import ReplacementList from '../../components/ReplacementList'
 import Title from '../../components/Title'
 import { colors, fontSizes } from '../../styles/themes'
 
-const Keys = () => {
+const Replacement = () => {
   return (
     <>
       <Title content={'Control de equipo de bodega'} />
@@ -61,4 +61,4 @@ const Keys = () => {
   )
 }
 
-export default Keys
+export default Replacement
