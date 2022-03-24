@@ -1,6 +1,6 @@
 import Title from '../../../components/Title'
 import AlertForm from '../../../components/AlertForm'
-import getAlert from '../../../services/getAlert'
+import getAlerts from '../../../services/getAlerts'
 
 const AlertEdit = ({ alert }) => {
   return (
@@ -14,7 +14,7 @@ const AlertEdit = ({ alert }) => {
 export const getServerSideProps = async (ctx) => {
   const { params } = ctx
   const { id } = params
-  const alert = await getAlert({ id })
+  const alert = await getAlerts({ id })
 
   return { props: { alert: alert } }
 }
