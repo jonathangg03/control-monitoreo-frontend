@@ -19,12 +19,8 @@ const AlertForm = ({ alert }) => {
       const response = await editAlert({ alert: values, id: alert._id })
       response.error ? setError(response) : router.push('/alertas')
     } else {
-      try {
-        await sendAlert({ alert: values })
-        router.push('/alertas')
-      } catch (error) {
-        console.log(error)
-      }
+      const response = await sendAlert({ alert: values })
+      response.error ? setError(response) : router.push('/alertas')
     }
   }
 
@@ -116,8 +112,7 @@ const AlertForm = ({ alert }) => {
           />
         </label>
         <button>Agregar</button>
-        {console.log(error)}
-        <p>{error?.message}</p>
+        <p className='errorReq'>{error?.message}</p>
       </form>
       <style jsx>{styles}</style>
     </>

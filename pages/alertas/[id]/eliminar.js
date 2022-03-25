@@ -1,20 +1,18 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { colors, fontSizes } from '../../../styles/themes'
 import { deleteAlert } from '../../../services/alerts'
 
 const AlertDelete = () => {
+  const [error, setError] = useState()
   const router = useRouter()
 
   const handleDelete = async (event) => {
     if (event.target.textContent === 'Cancelar') {
       router.push('/alertas')
     } else {
-      try {
-        await deleteAlert({ id: router.query.id })
-        router.push('/alertas')
-      } catch (error) {
-        console.log(error.message)
-      }
+      const response = await deleteAlert({ id: router.query.id })
+      response.error ? setError(response) : router.push('/alertas')
     }
   }
   return (
@@ -28,6 +26,7 @@ const AlertDelete = () => {
           Eliminar
         </button>
       </div>
+      <p className='errorReq'>{error?.message}</p>
       <style jsx>
         {`
           section {
@@ -60,6 +59,13 @@ const AlertDelete = () => {
 
           .delete__button {
             background-color: #c50000;
+          }
+
+          .errorReq {
+            margin-top: 20px;
+            text-align: center;
+            font-size: ${fontSizes.main};
+            color: red;
           }
         `}
       </style>
