@@ -13,6 +13,7 @@ const KeyUserList = ({ keyUsers }) => {
           <h2>Hora del retiro</h2>
           <h2>Número de unidades</h2>
           <h2>Hora de devolución</h2>
+          <h2>Opciones</h2>
         </li>
         {keyUsers.map((keyUser) => (
           <li key={keyUser._id}>

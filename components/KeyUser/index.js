@@ -1,7 +1,9 @@
 import propTypes from 'prop-types'
+import Link from 'next/link'
+import { BsPencilSquare, BsXLg } from 'react-icons/bs'
 import styles from './styles'
 
-const KeyUser = ({ user, keyName, units, date, retirement, delivery }) => {
+const KeyUser = ({ user, keyName, units, date, retirement, delivery, _id }) => {
   return (
     <>
       <p>{user}</p>
@@ -10,6 +12,18 @@ const KeyUser = ({ user, keyName, units, date, retirement, delivery }) => {
       <p>{retirement}</p>
       <p>{units}</p>
       <p>{delivery}</p>
+      <div>
+        <Link href={`/llaves/${_id}/editar`}>
+          <a title='Editar'>
+            <BsPencilSquare />
+          </a>
+        </Link>
+        <Link href={`/llaves/${_id}/eliminar`}>
+          <a className='delete' title='Eliminar'>
+            <BsXLg />
+          </a>
+        </Link>
+      </div>
       <style jsx>{styles}</style>
     </>
   )

@@ -4,7 +4,7 @@ import useFilter from '../../hooks/useFilter'
 import Filter from '../../components/Filter'
 import KeyUserList from '../../components/KeyUserList'
 import Title from '../../components/Title'
-import getKeys from '../../services/getKeys'
+import { getKeys } from '../../services/keys'
 import { colors, fontSizes } from '../../styles/themes'
 
 const Keys = ({ keys }) => {
@@ -12,7 +12,7 @@ const Keys = ({ keys }) => {
   const { filteredRecords: filteredKeys, handleSearch } = useFilter({
     searchValue,
     registers: keys,
-    filter: 'keyName'
+    filter: 'user'
   })
 
   const handleSearchChange = (event) => {
