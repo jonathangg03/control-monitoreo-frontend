@@ -1,23 +1,33 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import ReplacementList from '../../components/ReplacementList'
+import useFilter from '../../hooks/useFilter'
 import Title from '../../components/Title'
+import Filter from '../../components/Filter'
+import { getReplacements } from '../../services/replacements'
 import { colors, fontSizes } from '../../styles/themes'
 
-const Replacement = () => {
+const Replacement = ({ replacements }) => {
+  const [searchValue, setSearchValue] = useState('')
+  const { filteredRecords: filteredReplacements, handleSearch } = useFilter({
+    searchValue,
+    registers: replacements,
+    filter: 'client'
+  })
+
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value)
+  }
   return (
     <>
       <Title content={'Control de equipo de bodega'} />
-      <form className='search'>
-        <input
-          type='text'
-          placeholder='Buscar equipo'
-          required
-          name='search'
-          onClick={() => {}}
-        />
-        <button>Buscar</button>
-      </form>
-      <ReplacementList replacements={[]} />
+      <Filter
+        handleSearch={handleSearch}
+        handleSearchChange={handleSearchChange}
+        searchValue={searchValue}
+        inputPlaceholder='Filtrar por nombre de cliente'
+      />
+      <ReplacementList replacements={filteredReplacements || []} />
       <Link href='/equipo/nuevo'>
         <a>Agregar registro</a>
       </Link>
@@ -59,6 +69,12 @@ const Replacement = () => {
       `}</style>
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const replacements = await getReplacements()
+
+  return { props: { replacements: replacements } }
 }
 
 export default Replacement
