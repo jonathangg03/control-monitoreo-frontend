@@ -17,6 +17,7 @@ const ReplacementList = ({ replacements }) => {
           <h2>Nombre del equipo</h2>
           <h2>Nombre del ingeniero</h2>
           <h2>Descripción</h2>
+          <h2>Opciones</h2>
         </li>
         {replacements.map((replacement) => (
           <li key={replacement._id}>

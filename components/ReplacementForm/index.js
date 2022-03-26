@@ -1,15 +1,30 @@
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { sendReplacement, editReplacement } from '../../services/replacements'
 import styles from './styles'
 
-const ReplacementForm = () => {
+const ReplacementForm = ({ replacement }) => {
+  const router = useRouter()
+  const [error, setError] = useState()
+
   const {
     handleSubmit,
     register,
     formState: { errors }
-  } = useForm()
+  } = useForm({ defaultValues: replacement || {} })
 
-  const onSubmit = (values) => {
-    console.log(values)
+  const onSubmit = async (values) => {
+    if (replacement) {
+      const response = await editReplacement({
+        replacement: values,
+        id: replacement._id
+      })
+      response.error ? setError(response) : router.push('/equipo')
+    } else {
+      const response = await sendReplacement({ replacement: values })
+      response.error ? setError(response) : router.push('/equipo')
+    }
   }
 
   return (
@@ -17,8 +32,13 @@ const ReplacementForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
           <p>Número de caso:</p>
-          <input type='number' {...register('ticket', { required: true })} />
-          {errors.ticket && <p className='error__message'>Caso requerida</p>}
+          <input
+            type='number'
+            {...register('caseNumber', { required: true })}
+          />
+          {errors.caseNumber && (
+            <p className='error__message'>Caso requerida</p>
+          )}
         </label>
         <label>
           <p>Cliente:</p>
@@ -44,17 +64,22 @@ const ReplacementForm = () => {
         </label>
         <label>
           <p>Número de serie:</p>
-          <input type='number' {...register('units', { required: true })} />
-          {errors.units && (
-            <p className='error__message'>Unidades requeridas</p>
+          <input
+            type='text'
+            {...register('seriesNumber', { required: true })}
+          />
+          {errors.seriesNumber && (
+            <p className='error__message'>Serie requeridas</p>
           )}
         </label>
         <label>
           <p>Unidades:</p>
-          <input type='text' {...register('contact', { required: true })} />
-          {errors.contact && (
-            <p className='error__message'>Ingeniero requerido</p>
-          )}
+          <input
+            type='number'
+            min={1}
+            {...register('units', { required: true })}
+          />
+          {errors.units && <p className='error__message'>Unidades requerido</p>}
         </label>
         <label>
           <p>Nombre del equipo:</p>
@@ -81,6 +106,7 @@ const ReplacementForm = () => {
           )}
         </label>
         <button>Agregar</button>
+        <p className='errorReq'>{error?.message}</p>
       </form>
       <style jsx>{styles}</style>
     </>

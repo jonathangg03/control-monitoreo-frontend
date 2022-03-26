@@ -1,5 +1,6 @@
 import propTypes from 'prop-types'
-
+import Link from 'next/link'
+import { BsPencilSquare, BsXLg } from 'react-icons/bs'
 import styles from './styles'
 
 const Replacement = ({
@@ -12,7 +13,8 @@ const Replacement = ({
   units,
   partName,
   engineerName,
-  description
+  description,
+  _id
 }) => {
   return (
     <>
@@ -26,6 +28,18 @@ const Replacement = ({
       <p>{partName}</p>
       <p>{engineerName}</p>
       <p>{description}</p>
+      <div>
+        <Link href={`/equipo/${_id}/editar`}>
+          <a title='Editar'>
+            <BsPencilSquare />
+          </a>
+        </Link>
+        <Link href={`/equipo/${_id}/eliminar`}>
+          <a className='delete' title='Eliminar'>
+            <BsXLg />
+          </a>
+        </Link>
+      </div>
       <style jsx>{styles}</style>
     </>
   )
