@@ -1,15 +1,30 @@
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { editTicket, sendTicket } from '../../services/tickets'
 import styles from './styles'
 
-const TicketForm = () => {
+const TicketForm = ({ ticket }) => {
+  const router = useRouter()
+  const [error, setError] = useState()
+
   const {
     handleSubmit,
     register,
     formState: { errors }
-  } = useForm()
+  } = useForm({ defaultValues: ticket || {} })
 
-  const onSubmit = (values) => {
-    console.log(values)
+  const onSubmit = async (values) => {
+    if (ticket) {
+      const response = await editTicket({
+        ticket: values,
+        id: ticket._id
+      })
+      response.error ? setError(response) : router.push('/tickets')
+    } else {
+      const response = await sendTicket({ ticket: values })
+      response.error ? setError(response) : router.push('/tickets')
+    }
   }
 
   return (
@@ -17,8 +32,13 @@ const TicketForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
           <p>Número de caso:</p>
-          <input type='number' {...register('ticket', { required: true })} />
-          {errors.ticket && <p className='error__message'>Caso requerido</p>}
+          <input
+            type='number'
+            {...register('caseNumber', { required: true })}
+          />
+          {errors.caseNumber && (
+            <p className='error__message'>Caso requerido</p>
+          )}
         </label>
         <label>
           <p>Cliente:</p>
@@ -67,6 +87,7 @@ const TicketForm = () => {
           )}
         </label>
         <button>Agregar</button>
+        <p className='errorReq'>{error?.message}</p>
       </form>
       <style jsx>{styles}</style>
     </>

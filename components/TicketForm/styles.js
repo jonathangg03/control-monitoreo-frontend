@@ -37,6 +37,11 @@ const styles = css`
     border-radius: 5px;
     font-size: ${fontSizes.main};
   }
+
+  .errorReq {
+    margin-top: 20px;
+    color: red;
+  }
 `
 
 export default styles

@@ -1,23 +1,34 @@
 import Link from 'next/link'
+import { useState } from 'react'
 import TicketList from '../../components/TicketList'
 import Title from '../../components/Title'
+import useFilter from '../../hooks/useFilter'
 import { colors, fontSizes } from '../../styles/themes'
+import Filter from '../../components/Filter'
+import { getTickets } from '../../services/tickets'
 
-const Tickets = () => {
+const Tickets = ({ tickets }) => {
+  const [searchValue, setSearchValue] = useState('')
+  const { filteredRecords: filteredTickets, handleSearch } = useFilter({
+    searchValue,
+    registers: tickets,
+    filter: 'client'
+  })
+
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value)
+  }
+
   return (
     <>
       <Title content={'Control de tickets'} />
-      <form className='search'>
-        <input
-          type='text'
-          placeholder='Buscar ticket'
-          required
-          name='search'
-          onClick={() => {}}
-        />
-        <button>Buscar</button>
-      </form>
-      <TicketList tickets={[]} />
+      <Filter
+        handleSearch={handleSearch}
+        handleSearchChange={handleSearchChange}
+        searchValue={searchValue}
+        inputPlaceholder='Filtrar por nombre de cliente'
+      />
+      <TicketList tickets={filteredTickets || []} />
       <Link href='/tickets/nuevo'>
         <a>Agregar registro</a>
       </Link>
@@ -27,38 +38,15 @@ const Tickets = () => {
           color: ${colors.selector};
           text-decoration: none;
         }
-
-        form {
-          margin-bottom: 20px;
-        }
-
-        input {
-          width: 50%;
-          height: 35px;
-          margin-bottom: 10px;
-          outline: none;
-          padding: 0px 5px;
-          border: none;
-          border-bottom: 1px solid #f1f1f1;
-          color: ${colors.main};
-        }
-
-        input::placeholder {
-          color: #c1c1c1;
-        }
-
-        button {
-          display: block;
-          background-color: ${colors.selector};
-          border: none;
-          color: white;
-          padding: 10px 40px;
-          border-radius: 5px;
-          font-size: ${fontSizes.main};
-        }
       `}</style>
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const tickets = await getTickets()
+
+  return { props: { tickets: tickets } }
 }
 
 export default Tickets

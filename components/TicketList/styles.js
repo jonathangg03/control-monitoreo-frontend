@@ -33,7 +33,7 @@ const styles = css`
   li {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(8, 185px);
+    grid-template-columns: repeat(8, 185px) 70px;
     gap: 10px;
     padding: 10px 0 10px 10px;
   }

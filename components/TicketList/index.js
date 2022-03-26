@@ -15,6 +15,7 @@ const TicketList = ({ tickets }) => {
           <h2>ingeniero asignado</h2>
           <h2>Descripción</h2>
           <h2>Acciones tomadas</h2>
+          <h2>Opciones</h2>
         </li>
         {tickets.map((ticket) => (
           <li key={ticket._id}>
