@@ -60,13 +60,11 @@ const KeyForm = ({ keyElement }) => {
           {errors.units && (
             <p className='error__message'>Unidades requeridas</p>
           )}
-          <label>
-            <p>Hora de devolución:</p>
-            <input type='time' {...register('delivery', { required: true })} />
-            {errors.delivery && (
-              <p className='error__message'>Hora requerida</p>
-            )}
-          </label>
+        </label>
+        <label>
+          <p>Hora de devolución:</p>
+          <input type='time' {...register('delivery', { required: true })} />
+          {errors.delivery && <p className='error__message'>Hora requerida</p>}
         </label>
         <button>Agregar</button>
         <p className='errorReq'>{error?.message}</p>

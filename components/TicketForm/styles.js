@@ -2,12 +2,17 @@ import css from 'styled-jsx/css'
 import { colors, fontSizes } from '../../styles/themes'
 
 const styles = css`
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px 20px;
+  }
   p {
     font-size: ${fontSizes.main};
   }
 
   input {
-    width: 50%;
+    width: 100%;
     height: 35px;
     margin-bottom: 20px;
     outline: none;
@@ -36,11 +41,19 @@ const styles = css`
     padding: 10px 40px;
     border-radius: 5px;
     font-size: ${fontSizes.main};
+    width: 200px;
   }
 
   .errorReq {
     margin-top: 20px;
     color: red;
+  }
+
+  @media screen and (max-width: 1070px) {
+    form {
+      grid-template-columns: 1fr;
+      gap: 0px;
+    }
   }
 `
 
