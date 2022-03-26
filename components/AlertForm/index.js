@@ -58,10 +58,17 @@ const AlertForm = ({ alert }) => {
           <p>Persona contactada:</p>
           <input type='text' {...register('contact')} />
         </label>
-        <label>
-          <p>Correo de la persona contactada:</p>
-          <input type='email' {...register('contactEmail')} />
-        </label>
+        {!alert && (
+          <label>
+            <p>Correos a enviar:</p>
+            <input
+              type='email'
+              multiple={true}
+              {...register('contactEmail')}
+              placeholder='Correos electronicos a informar separados por comas y espacio'
+            />
+          </label>
+        )}
         <label>
           <p>Técnico de monitoreo:</p>
           <input

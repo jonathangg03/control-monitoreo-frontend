@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { colors, fontSizes } from '../../../styles/themes'
 import { deleteReplacement } from '../../../services/replacements'
 
-const AlertDelete = () => {
+const ReplacementDelete = () => {
   const [error, setError] = useState()
   const router = useRouter()
 
@@ -73,4 +73,4 @@ const AlertDelete = () => {
   )
 }
 
-export default AlertDelete
+export default ReplacementDelete
